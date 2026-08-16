@@ -284,7 +284,7 @@ function App() {
         className="toolkit section-shell"
         aria-labelledby="toolkit-heading"
       >
-        <p className="signal">// Experience</p>
+        <p className="signal">// EXPERIENCE</p>
         <h2 id="toolkit-heading">Skills</h2>
         <ul>
           {stack.map((item) => (
