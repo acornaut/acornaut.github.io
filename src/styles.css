@@ -1,15 +1,15 @@
 :root {
   --black: #050707;
-  --cyan: #0f6670;
+  --cyan: #157568;
   --cyan-light: #2a98a1;
-  --cyan-pale: #c0e5e5;
+  --cyan-pale: #dff1f1;
   --wordmark-green: #1b7d63;
   --wordmark-green-dark: #0c4d3c;
   --wordmark-green-pale: #afd6bd;
   --acorn: #d8b98b;
   --acorn-light: #f4e5cc;
   --text: #e5eee8;
-  --muted: #9eb6b8;
+  --muted: #bfd3d4;
   color: var(--text);
   background: var(--black);
   font-family:
