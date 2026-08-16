@@ -90,7 +90,7 @@ function ProjectGrid({ filter }: { filter: Filter }) {
   );
 }
 
-function Home() {
+function Home({ lightMode }: { lightMode: boolean }) {
   const developmentCount = projects.filter(
     (project) => project.kind === "Development",
   ).length;
@@ -118,11 +118,13 @@ function Home() {
           cellSize={8}
           cellAspect={0.62}
           charset=" .,:;i1tfLCG08@"
-          colored
+          colored={!lightMode}
+          color={lightMode ? "#0b1d15" : "#ffffff"}
+          invert={lightMode}
           contrast={1.65}
           edgeContrast={3}
           exposure={1.05}
-          background="#050707"
+          background={lightMode ? "#ffffff" : "#050707"}
           highlight="#d8b98b"
           environmentIntensity={0.85}
           scale={5.25}
@@ -254,22 +256,30 @@ function Detail({ slug }: { slug: string }) {
 
 function App() {
   const [route, setRoute] = useState(readRoute);
+  const [lightMode, setLightMode] = useState(
+    () => window.localStorage.getItem("theme") === "light",
+  );
   const year = new Date().getFullYear();
   useEffect(() => {
     const update = () => setRoute(readRoute());
     window.addEventListener("hashchange", update);
     return () => window.removeEventListener("hashchange", update);
   }, []);
+  useEffect(() => {
+    document.body.classList.toggle("light-mode", lightMode);
+    document.documentElement.style.colorScheme = lightMode ? "light" : "dark";
+    window.localStorage.setItem("theme", lightMode ? "light" : "dark");
+  }, [lightMode]);
   const page =
     route.page === "home" ? (
-      <Home />
+      <Home lightMode={lightMode} />
     ) : route.page === "detail" ? (
       <Detail slug={route.slug} />
     ) : (
       <Listing />
     );
   return (
-    <main>
+    <main className={lightMode ? "light-mode" : undefined}>
       <header className="topbar section-shell">
         <a href="#/" className="brand">
           ACORNAUT
@@ -299,6 +309,14 @@ function App() {
         <span>
           Contact: <a href={`mailto:${site.email}`}>contact@acornaut.net</a>
         </span>
+        <label className="theme-toggle">
+          <input
+            type="checkbox"
+            checked={lightMode}
+            onChange={(event) => setLightMode(event.target.checked)}
+          />
+          <span>Kill your eyes?</span>
+        </label>
         <nav className="social-links" aria-label="Social links">
           <a
             href={site.githubUrl}
