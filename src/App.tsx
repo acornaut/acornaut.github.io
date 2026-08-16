@@ -167,7 +167,7 @@ function Home() {
         aria-labelledby="about-heading"
       >
         <p className="signal">// ABOUT</p>
-        <h2 id="about-heading">A short version</h2>
+        <h2 id="about-heading">Who I am</h2>
         <p>{site.about}</p>
       </section>
     </>
@@ -277,7 +277,6 @@ function App() {
         <nav aria-label="Main navigation">
           <a href="#/projects">Projects</a>
           <a href="#about">About</a>
-          <a href={`mailto:${site.email}`}>Contact</a>
         </nav>
       </header>
       {page}
@@ -285,8 +284,8 @@ function App() {
         className="toolkit section-shell"
         aria-labelledby="toolkit-heading"
       >
-        <p className="signal">// TOOLKIT</p>
-        <h2 id="toolkit-heading">Things I use</h2>
+        <p className="signal">// SKILLS</p>
+        <h2 id="toolkit-heading">Skills I may or may not have.</h2>
         <ul>
           {stack.map((item) => (
             <li key={item}>{item}</li>
