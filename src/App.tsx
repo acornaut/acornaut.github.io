@@ -66,7 +66,7 @@ function EmptyProjects() {
     <div className="empty-collection">
       <strong>[ no projects here yet ]</strong>
       <p>
-        Add a Markdown file to <code>src/content/projects</code> and set its{" "}
+        Add an MDX file to <code>src/content/projects</code> and set its{" "}
         <code>kind</code> to Development or Writing. It will show up here
         automatically.
       </p>

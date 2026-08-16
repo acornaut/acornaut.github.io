@@ -30,7 +30,7 @@ export const site = {
 
 type Frontmatter = Record<string, string>;
 
-const projectFiles = import.meta.glob("./content/projects/*.md", {
+const projectFiles = import.meta.glob("./content/projects/*.mdx", {
   eager: true,
   query: "?raw",
   import: "default",
@@ -83,7 +83,7 @@ function toProject(fileName: string, raw: string): Project {
     throw new Error(`${fileName} has an invalid status.`);
 
   return {
-    slug: fileName.split("/").pop()!.replace(/\.md$/, ""),
+    slug: fileName.split("/").pop()!.replace(/\.mdx$/, ""),
     kind: data.kind,
     title: data.title,
     summary: data.summary,
@@ -104,7 +104,7 @@ function toProject(fileName: string, raw: string): Project {
   };
 }
 
-// Every Markdown file in content/projects becomes a project page automatically.
+// Every MDX file in content/projects becomes a project page automatically.
 export const projects = Object.entries(projectFiles)
   .map(([fileName, raw]) => toProject(fileName, raw))
   .sort(
