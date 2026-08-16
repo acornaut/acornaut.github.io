@@ -167,7 +167,7 @@ function Home() {
         aria-labelledby="about-heading"
       >
         <p className="signal">// ABOUT</p>
-        <h2 id="about-heading">Who I am</h2>
+        <h2 id="about-heading">Who Am I?</h2>
         <p>{site.about}</p>
       </section>
     </>
